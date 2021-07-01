@@ -98,7 +98,7 @@ target_include_directories(${IJKSDL_LIB_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/
 #include ffmpeg header files
 target_include_directories(${IJKSDL_LIB_NAME} PRIVATE ${IJK_FFMPAG_BUILD_DIR}/include)
 
-target_compile_options(${IJKSDL_LIB_NAME} PUBLIC "-Werror")
+#target_compile_options(${IJKSDL_LIB_NAME} PUBLIC "-Werror")
 target_compile_options(${IJKSDL_LIB_NAME} PRIVATE "-Wno-implicit-function-declaration")
 target_compile_options(${IJKSDL_LIB_NAME} PRIVATE "-Wno-deprecated-declarations")
 

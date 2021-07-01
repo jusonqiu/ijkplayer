@@ -24,7 +24,7 @@ if (ANDROID)
     endif ()
 endif ()
 
-set(CMAKE_C_FLAGS -std=c99)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 
 set(BUILD_SOURCES
     ff_fferror.h
