@@ -1,27 +1,8 @@
-#
-# Copyright (c) 2019 Befovy <befovy@gmail.com>
-#
-# This file is part of fijkPlayer.
-#
-# fijkPlayer is free software; you can redistribute it and/or
-# modify it under the terms of the GNU Lesser General Public
-# License as published by the Free Software Foundation; either
-# version 2.1 of the License, or (at your option) any later version.
-#
-# fijkPlayer is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public
-# License along with ijkPlayer; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-#
-
-
 cmake_minimum_required(VERSION 3.6)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR})
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 
 set(J4A_SOURCES
     j4a/j4a_allclasses.c
@@ -42,4 +23,13 @@ set(J4A_SOURCES
     j4au/class/java/nio/ByteBuffer.util.c
 )
 
-add_library(ijkj4a STATIC ${J4A_SOURCES})
+#if(ANDROID)
+#    include(AndroidNdkModules)
+#    android_ndk_import_module_cpufeatures()
+#endif(ANDROID)
+
+set(IJK4A_LIB_NAME ijkj4a)
+add_library(${IJK4A_LIB_NAME} STATIC ${J4A_SOURCES})
+target_include_directories(${IJK4A_LIB_NAME} PRIVATE "${CMAKE_CURRENT_LIST_DIR}")
+#target_link_libraries(${IJK4A_LIB_NAME} cpufeatures)
+
