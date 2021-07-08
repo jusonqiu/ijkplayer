@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.6)
 
+set(VERSION_SH ${})
+
 if (ANDROID)
     if (${ANDROID_ABI} STREQUAL "armeabi-v7a")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mfloat-abi=soft")
@@ -50,6 +52,10 @@ set(BUILD_SOURCES
 
 set(IJKPLAYER_LIB_NAME ijkplayer)
 
+set(VERSION_H ijkversion.h)
+execute_process(
+        COMMAND sh ${CMAKE_CURRENT_LIST_DIR}/version.sh ${CMAKE_CURRENT_LIST_DIR} ${VERSION_H}
+)
 add_library(${IJKPLAYER_LIB_NAME} SHARED ${BUILD_SOURCES})
 
 target_include_directories(${IJKPLAYER_LIB_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR})

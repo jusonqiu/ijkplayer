@@ -70,7 +70,7 @@ if (ANDROID)
     target_link_libraries(${IJKSDL_LIB_NAME} ijkffmpeg)
     target_link_libraries(${IJKSDL_LIB_NAME} ijkj4a)
 #     target_link_libraries(${IJKSDL_LIB_NAME} cpufeatures) #cpu 优化
-    target_link_libraries(${IJKSDL_LIB_NAME} yuv_static)
+    target_link_libraries(${IJKSDL_LIB_NAME} ijkyuv)
     target_link_libraries(${IJKSDL_LIB_NAME} log android OpenSLES EGL GLESv2)
 endif ()
 
